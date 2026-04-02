@@ -7,7 +7,7 @@ type UseKeybindsProps = {
     onEnterPanel?: () => void
     onEscapePanel?: () => void
     focusMode: 'inner' | 'outer'
-    contentRef: RefObject<HTMLElement>
+    contentRef: RefObject<HTMLElement | null>
 }
 
 export function useKeybinds({
