@@ -8,7 +8,7 @@ type SkillGroup = {
     items: SkillItem[]
 }
 
-const skills: SkillGroup[] = [
+export const skills: SkillGroup[] = [
     {
         group: 'LANGUAGES',
         items: [

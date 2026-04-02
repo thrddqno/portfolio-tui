@@ -11,7 +11,7 @@ type AboutData = {
     interests: string[]
 }
 
-const about: AboutData = {
+export const about: AboutData = {
     name: 'Antonio Dioquino',
     tagline: 'Software Engineer · Java Developer · Backend Development',
 

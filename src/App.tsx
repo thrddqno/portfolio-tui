@@ -2,12 +2,14 @@ import { useCallback, useRef, useState } from 'react'
 
 import InnerPanel from './components/InnerPanel.tsx'
 import KeybindHints from './components/KeybindHints.tsx'
+import MobileLayout from './components/MobileLayout.tsx'
 import Sidebar from './components/SideBar.tsx'
 import StatusBar from './components/StatusBar.tsx'
 import TitleBar, { Tabs } from './components/TitleBar.tsx'
 import { contact } from './components/sections/Contacts.tsx'
 import { projects } from './components/sections/Projects.tsx'
 import { SECTIONS } from './data/sections.ts'
+import { useIsMobile } from './hooks/useIsMobile.ts'
 import { useKeybinds } from './hooks/useKeybinds.ts'
 
 const INNER_SECTIONS = ['projects', 'contact']
@@ -18,6 +20,7 @@ function App() {
     const [focusMode, setFocusMode] = useState<'inner' | 'outer'>('outer')
     const contentRef = useRef<HTMLElement | null>(null)
     const [innerIdx, setInnerIdx] = useState(0)
+    const isMobile = useIsMobile()
 
     const currentSection = SECTIONS[sectionIdx]
     const canEnterInner = INNER_SECTIONS.includes(currentSection)
@@ -109,6 +112,8 @@ function App() {
         focusMode,
         contentRef,
     })
+
+    if (isMobile) return <MobileLayout />
 
     return (
         <div
