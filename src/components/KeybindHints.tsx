@@ -5,9 +5,9 @@ const OUTER_HINTS = [
 ]
 
 const INNER_HINTS = [
-    { key: 'j/k', desc: 'select item' },
-    { key: 'Esc/h', desc: 'back to nav' },
-    { key: 'Ctrl+d/u', desc: 'scroll' },
+    { key: 'j & k / ArrowUp & ArrowDown', desc: 'select item' },
+    { key: 'Esc / h', desc: 'back to nav' },
+    { key: 'Ctrl+d / u', desc: 'scroll' },
     { key: 'Enter', desc: 'open link' },
 ]
 
