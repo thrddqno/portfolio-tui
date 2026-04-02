@@ -11,7 +11,12 @@ const INNER_HINTS = [
     { key: 'Enter', desc: 'open link' },
 ]
 
-export default function KeybindHints({ focusMode, canEnterInner }) {
+type Props = {
+    focusMode: 'inner' | 'outer'
+    canEnterInner: boolean
+}
+
+export default function KeybindHints({ focusMode, canEnterInner }: Props) {
     const hints =
         focusMode === 'inner'
             ? INNER_HINTS

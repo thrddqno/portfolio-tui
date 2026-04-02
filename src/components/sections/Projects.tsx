@@ -29,12 +29,19 @@ export const projects: ProjectItem[] = [
     },
 ]
 
+type SectionPanelProps = {
+    focusMode: 'inner' | 'outer'
+    innerIdx: number
+    onInnerSelect: (i: number) => void
+    onEnterPanel: () => void
+}
+
 export default function Projects({
     focusMode,
     innerIdx,
     onInnerSelect,
     onEnterPanel,
-}) {
+}: SectionPanelProps) {
     const active = focusMode === 'inner'
 
     return (

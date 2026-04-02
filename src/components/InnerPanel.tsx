@@ -1,16 +1,30 @@
-import { forwardRef } from 'react'
+import { forwardRef, type Ref } from 'react'
 
-import { SECTION_META, SECTIONS } from '../data/sections.ts'
+import { type Section, SECTION_META, SECTIONS } from '../data/sections.ts'
 import About from './sections/About.tsx'
 import Contact from './sections/Contacts.tsx'
 import Projects from './sections/Projects.tsx'
 import Skills from './sections/Skills.tsx'
 
+type InnerPanelProps = {
+    sectionIdx: number
+    focusMode: 'inner' | 'outer'
+    innerIdx: number
+    onInnerSelect: (i: number) => void
+    onEnterPanel: () => void
+}
+
 const InnerPanel = forwardRef(function ContentPanel(
-    { sectionIdx, focusMode, innerIdx, onInnerSelect, onEnterPanel },
+    {
+        sectionIdx,
+        focusMode,
+        innerIdx,
+        onInnerSelect,
+        onEnterPanel,
+    }: InnerPanelProps,
     ref
 ) {
-    const section = SECTIONS[sectionIdx]
+    const section = SECTIONS[sectionIdx] as Section
     const meta = SECTION_META[section]
 
     const sectionProps = { focusMode, innerIdx, onInnerSelect, onEnterPanel }
@@ -45,7 +59,7 @@ const InnerPanel = forwardRef(function ContentPanel(
                 )}
             </div>
             <div
-                ref={ref}
+                ref={ref as Ref<HTMLDivElement>}
                 className="flex-1 bg-base-200 overflow-y-auto px-5 py-6"
             >
                 {renderSection()}

@@ -25,13 +25,22 @@ export function useKeybinds({
     const gTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
 
     useEffect(() => {
-        const handler = (e) => {
-            const tag = e.target.tagName.toLowerCase()
-            if (tag === 'input' || tag === 'textarea') return
+        const handler = (e: KeyboardEvent) => {
+            const target = e.target as HTMLElement | null
+            if (
+                target?.tagName.toLowerCase() === 'input' ||
+                target?.tagName.toLowerCase() === 'textarea'
+            )
+                return
 
             if (e.key === 'd' && e.ctrlKey) {
                 e.preventDefault()
-                contentRef.current.scrollBy({ top: 200, behavior: 'smooth' })
+                if (contentRef.current) {
+                    contentRef.current.scrollBy({
+                        top: 200,
+                        behavior: 'smooth',
+                    })
+                }
                 return
             }
 

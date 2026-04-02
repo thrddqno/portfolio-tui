@@ -6,9 +6,6 @@ import { MobileContact } from './MobileContact.tsx'
 import { MobileProjects } from './MobileProjects.tsx'
 import { MobileSkills } from './MobileSkills.tsx'
 import { about } from './sections/About.tsx'
-import { contact } from './sections/Contacts.tsx'
-import { projects } from './sections/Projects.tsx'
-import { skills } from './sections/Skills.tsx'
 
 const TABS = ['about', 'skills', 'projects', 'contact'] as const
 type Tab = (typeof TABS)[number]

@@ -25,23 +25,30 @@ function App() {
     const currentSection = SECTIONS[sectionIdx]
     const canEnterInner = INNER_SECTIONS.includes(currentSection)
 
-    const navigate = useCallback((value, mode?) => {
-        setSectionIdx((prev) => {
-            let next = prev
-            if (mode === 'absolute')
-                next = Math.max(0, Math.min(SECTIONS.length - 1, value))
-            else if (value === 'first') next = 0
-            else if (value === 'last') next = SECTIONS.length - 1
-            else next = Math.max(0, Math.min(SECTIONS.length - 1, prev + value))
-            return next
-        })
-        setFocusMode('outer')
-        setInnerIdx(0)
-        contentRef.current?.scrollTo({ top: 0, behavior: 'smooth' })
-    }, [])
+    const navigate = useCallback(
+        (value: number | 'first' | 'last', mode?: 'absolute') => {
+            setSectionIdx((prev) => {
+                let next = prev
+                if (mode === 'absolute' && typeof value === 'number')
+                    next = Math.max(0, Math.min(SECTIONS.length - 1, value))
+                else if (value === 'first') next = 0
+                else if (value === 'last') next = SECTIONS.length - 1
+                else
+                    next = Math.max(
+                        0,
+                        Math.min(SECTIONS.length - 1, prev + value)
+                    )
+                return next
+            })
+            setFocusMode('outer')
+            setInnerIdx(0)
+            contentRef.current?.scrollTo({ top: 0, behavior: 'smooth' })
+        },
+        []
+    )
 
     const innerNavigate = useCallback(
-        (dir) => {
+        (dir: number) => {
             setInnerIdx((i) => {
                 const max =
                     currentSection == 'projects'
@@ -125,8 +132,7 @@ function App() {
             <div className={'flex flex-1 overflow-hidden'}>
                 <Sidebar
                     sectionIdx={sectionIdx}
-                    focusMode={focusMode}
-                    onSelect={(i) => {
+                    onSelect={(i: number) => {
                         setSectionIdx(i)
                         setFocusMode('outer')
                         setInnerIdx(0)
@@ -137,7 +143,7 @@ function App() {
                     focusMode={focusMode}
                     innerIdx={innerIdx}
                     onInnerSelect={setInnerIdx}
-                    onEnterInner={enterInner}
+                    onEnterPanel={enterInner}
                     ref={contentRef}
                 />
             </div>

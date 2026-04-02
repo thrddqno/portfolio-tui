@@ -1,6 +1,11 @@
 import { SECTIONS } from '../data/sections.ts'
 
-export default function StatusBar({ sectionIdx, focusMode }) {
+type Props = {
+    sectionIdx: number
+    focusMode: 'inner' | 'outer'
+}
+
+export default function StatusBar({ sectionIdx, focusMode }: Props) {
     const mode = focusMode === 'inner' ? 'FOCUSED' : 'NORMAL'
 
     return (

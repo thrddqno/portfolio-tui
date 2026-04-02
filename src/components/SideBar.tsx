@@ -1,6 +1,11 @@
 import { SECTIONS, NAV_ICONS } from '../data/sections.ts'
 
-export default function Sidebar({ sectionIdx, onSelect }) {
+type Props = {
+    sectionIdx: number
+    onSelect: (i: number) => void
+}
+
+export default function Sidebar({ sectionIdx, onSelect }: Props) {
     return (
         <div
             className={`w-55 flex shrink-0 flex-col border-r border-base-300 bg-base-100`}

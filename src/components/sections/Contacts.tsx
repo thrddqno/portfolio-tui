@@ -40,12 +40,19 @@ export const contact: ContactType[] = [
     },
 ]
 
+type SectionPanelProps = {
+    focusMode: 'inner' | 'outer'
+    innerIdx: number
+    onInnerSelect: (i: number) => void
+    onEnterPanel: () => void
+}
+
 export default function Contact({
     focusMode,
     innerIdx,
     onInnerSelect,
     onEnterPanel,
-}) {
+}: SectionPanelProps) {
     const active = focusMode === 'inner'
 
     return (
