@@ -40,4 +40,10 @@
 
 @theme {
   --font-sans: "JetBrains Mono", monospace;
+  --animate-blinking: blinking 0.6s infinite alternate;
+  @keyframes blinking {
+    50% {
+      background: transparent;
+    }
+  }
 }

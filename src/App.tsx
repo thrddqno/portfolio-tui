@@ -1,6 +1,7 @@
 import { useCallback, useRef, useState } from 'react'
 
 import InnerPanel from './components/InnerPanel.tsx'
+import Intro from './components/Intro.tsx'
 import KeybindHints from './components/KeybindHints.tsx'
 import MobileLayout from './components/MobileLayout.tsx'
 import Sidebar from './components/SideBar.tsx'
@@ -15,6 +16,7 @@ import { useKeybinds } from './hooks/useKeybinds.ts'
 const INNER_SECTIONS = ['projects', 'contact']
 
 function App() {
+    const [showIntro, setShowIntro] = useState(true)
     const [sectionIdx, setSectionIdx] = useState(0)
     const [activeTab, setActiveTab] = useState(0)
     const [focusMode, setFocusMode] = useState<'inner' | 'outer'>('outer')
@@ -120,6 +122,7 @@ function App() {
         contentRef,
     })
 
+    if (showIntro) return <Intro onFinish={() => setShowIntro(false)} />
     if (isMobile) return <MobileLayout />
 
     return (
