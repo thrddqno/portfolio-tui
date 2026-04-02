@@ -1,5 +1,8 @@
 import { useCallback, useRef, useState } from 'react'
 
+import KeybindHints from './components/KeybindHints.tsx'
+import Sidebar from './components/SideBar.tsx'
+import StatusBar from './components/StatusBar.tsx'
 import TitleBar, { Tabs } from './components/TitleBar.tsx'
 import { SECTIONS } from './data/sections.ts'
 import { useKeybinds } from './hooks/useKeybinds.ts'
