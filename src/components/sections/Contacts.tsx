@@ -23,7 +23,7 @@ export const contact: ContactType[] = [
         icon: '↓',
         label: 'resume',
         value: 'Download Resume',
-        url: '../../public/resume.pdf',
+        url: 'https://thrddqno.github.io/portfolio-tui/resume.pdf',
         download: true,
     },
     {
