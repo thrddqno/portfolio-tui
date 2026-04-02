@@ -18,7 +18,7 @@ const about: AboutData = {
     degree: 'Diploma in Computer Engineering Technology',
     university: 'Polytechnic University of the Philippines',
     location: 'Philippines 🇵🇭',
-    experience: '~2 yrs Java / Spring Boot (incl. internships)',
+    experience: '3 yrs Java · 1 yr Spring Boot (including internships)',
     status: 'open to work ✓',
     interests: [
         'Java',

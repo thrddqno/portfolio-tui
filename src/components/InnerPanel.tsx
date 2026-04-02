@@ -2,6 +2,8 @@ import { forwardRef } from 'react'
 
 import { SECTION_META, SECTIONS } from '../data/sections.ts'
 import About from './sections/About.tsx'
+import Contact from './sections/Contacts.tsx'
+import Projects from './sections/Projects.tsx'
 import Skills from './sections/Skills.tsx'
 
 const InnerPanel = forwardRef(function ContentPanel(
@@ -19,12 +21,11 @@ const InnerPanel = forwardRef(function ContentPanel(
                 return <About />
             case 'skills':
                 return <Skills />
-            /*case 'projects':
+            case 'projects':
                 return <Projects {...sectionProps} />
             case 'contact':
                 return <Contact {...sectionProps} />
 
-             */
             default:
                 return null
         }
@@ -43,7 +44,10 @@ const InnerPanel = forwardRef(function ContentPanel(
                     </span>
                 )}
             </div>
-            <div ref={ref} className="flex-1 overflow-y-auto px-5 py-6">
+            <div
+                ref={ref}
+                className="flex-1 bg-base-200 overflow-y-auto px-5 py-6"
+            >
                 {renderSection()}
             </div>
         </div>

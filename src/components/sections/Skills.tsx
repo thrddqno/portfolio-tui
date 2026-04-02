@@ -48,7 +48,7 @@ const skills: SkillGroup[] = [
     {
         group: 'DEVOPS',
         items: [
-            { name: 'Linux (Arch)', hot: true },
+            { name: 'Linux', hot: true },
             { name: 'Docker Compose' },
             { name: 'Docker/Podman' },
             { name: 'Git' },
@@ -67,7 +67,7 @@ export default function Skills() {
                     {group.items.map((item) => (
                         <span
                             key={item.name}
-                            className={`inline-block py-0.5 px-2.5 border rounded-box my-0.5 mr-1.5 ${item.hot ? 'text-accent border-accent' : 'bg-base-200 border-base-300 text-secondary'}`}
+                            className={`inline-block py-0.5 px-2.5 border rounded-box my-0.5 mr-1.5 ${item.hot ? 'text-accent border-accent' : 'bg-base-100 border-base-300 text-secondary'}`}
                         >
                             {item.name}
                         </span>
