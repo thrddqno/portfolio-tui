@@ -4,33 +4,44 @@ export function MobileAbout() {
     return (
         <div className="space-y-4">
             <div className="space-y-2">
-                {Object.entries(about).map(([key, val]) => (
-                    <div key={key} className="flex gap-3 text-sm">
-                        <span className="text-secondary w-28 shrink-0">
-                            {key}
-                        </span>
-                        <span
-                            className={
-                                key === 'status' || key === 'location'
-                                    ? 'text-success'
-                                    : 'text-base-content'
-                            }
-                        >
-                            {String(val)}
-                        </span>
-                    </div>
-                ))}
+                {Object.entries(about).map(
+                    ([key, val]) =>
+                        key !== 'name' &&
+                        key !== 'tagline' &&
+                        key !== 'interests' && (
+                            <div key={key} className="flex gap-3 text-sm">
+                                <span className="text-secondary w-28 shrink-0">
+                                    {key}
+                                </span>
+                                <span
+                                    className={
+                                        key === 'status' || key === 'location'
+                                            ? 'text-success'
+                                            : 'text-base-content'
+                                    }
+                                >
+                                    {String(val)}
+                                </span>
+                            </div>
+                        )
+                )}
             </div>
             <hr className="border-base-300" />
-            <div className="flex flex-wrap gap-2">
-                {about.interests.map((i: string) => (
-                    <span
-                        key={i}
-                        className="bg-base-200 text-accent text-xs px-2 py-1 rounded"
-                    >
-                        {i}
-                    </span>
-                ))}
+
+            <div className={'flex flex-col gap-3'}>
+                <span className="text-secondary w-28 shrink-0 text-sm">
+                    interests
+                </span>
+                <div className="flex flex-wrap gap-2">
+                    {about.interests.map((i: string) => (
+                        <span
+                            key={i}
+                            className="bg-base-200 text-accent text-xs px-2 py-1 rounded"
+                        >
+                            {i}
+                        </span>
+                    ))}
+                </div>
             </div>
             <hr className="border-base-300" />
             <p className="text-secondary text-sm leading-relaxed">
