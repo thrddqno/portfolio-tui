@@ -3,6 +3,7 @@ import { type RefObject, useEffect, useRef } from 'react'
 type UseKeybindsProps = {
     onNavigate?: (direction: number | 'first' | 'last') => void
     onInnerNavigate?: (direction: number) => void
+    onInnerEnter?: () => void
     onTabCycle?: () => void
     onEnterPanel?: () => void
     onEscapePanel?: () => void
@@ -13,6 +14,7 @@ type UseKeybindsProps = {
 export function useKeybinds({
     onNavigate,
     onInnerNavigate,
+    onInnerEnter,
     onTabCycle,
     onEnterPanel,
     onEscapePanel,
@@ -58,6 +60,11 @@ export function useKeybinds({
                 if (e.key === 'k' || e.key === 'ArrowUp') {
                     e.preventDefault()
                     onInnerNavigate?.(-1)
+                    return
+                }
+                if (e.key === 'Enter') {
+                    e.preventDefault()
+                    onInnerEnter?.()
                     return
                 }
                 return
@@ -119,6 +126,7 @@ export function useKeybinds({
     }, [
         onNavigate,
         onInnerNavigate,
+        onInnerEnter,
         onTabCycle,
         onEnterPanel,
         onEscapePanel,

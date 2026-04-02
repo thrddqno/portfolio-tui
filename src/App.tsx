@@ -5,6 +5,8 @@ import KeybindHints from './components/KeybindHints.tsx'
 import Sidebar from './components/SideBar.tsx'
 import StatusBar from './components/StatusBar.tsx'
 import TitleBar, { Tabs } from './components/TitleBar.tsx'
+import { contact } from './components/sections/Contacts.tsx'
+import { projects } from './components/sections/Projects.tsx'
 import { SECTIONS } from './data/sections.ts'
 import { useKeybinds } from './hooks/useKeybinds.ts'
 
@@ -35,13 +37,25 @@ function App() {
         contentRef.current?.scrollTo({ top: 0, behavior: 'smooth' })
     }, [])
 
-    const innerNavigate = useCallback((dir) => {
-        setInnerIdx((i) => Math.max(0, i + dir))
-    }, [])
+    const innerNavigate = useCallback(
+        (dir) => {
+            setInnerIdx((i) => {
+                const max =
+                    currentSection == 'projects'
+                        ? projects.length - 1
+                        : contact.length - 2
+                const next = i + dir
+                return Math.max(0, Math.min(max, next))
+            })
+        },
+        [currentSection]
+    )
 
     const enterInner = useCallback(() => {
-        if (canEnterInner) setFocusMode('inner')
-    }, [canEnterInner, setFocusMode])
+        if (canEnterInner) {
+            setFocusMode('inner')
+        }
+    }, [canEnterInner])
 
     const escapeInner = useCallback(() => {
         setFocusMode('outer')
@@ -51,9 +65,44 @@ function App() {
         setActiveTab((t) => (t + 1) % Tabs.length)
     }, [])
 
+    const onInnerEnter = useCallback(() => {
+        let item:
+            | {
+                  url?: string | null
+                  value?: string
+                  label?: string
+                  download?: boolean
+              }
+            | undefined
+
+        if (currentSection === 'projects') item = projects[innerIdx]
+        else if (currentSection === 'contact') item = contact[innerIdx]
+        else return
+
+        if (!item) return
+
+        if (item.label === 'email') {
+            window.location.href = `mailto:${item.value}`
+            return
+        }
+
+        if (!item.url) return
+
+        if (item.download) {
+            const a = document.createElement('a')
+            a.href = item.url
+            a.download = ''
+            a.click()
+            return
+        }
+
+        window.open(item.url, '_blank')
+    }, [innerIdx, currentSection])
+
     useKeybinds({
         onNavigate: navigate,
         onInnerNavigate: innerNavigate,
+        onInnerEnter: onInnerEnter,
         onTabCycle: cycleTab,
         onEnterPanel: enterInner,
         onEscapePanel: escapeInner,
