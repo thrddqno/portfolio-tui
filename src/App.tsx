@@ -1,5 +1,6 @@
 import { useCallback, useRef, useState } from 'react'
 
+import InnerPanel from './components/InnerPanel.tsx'
 import KeybindHints from './components/KeybindHints.tsx'
 import Sidebar from './components/SideBar.tsx'
 import StatusBar from './components/StatusBar.tsx'
@@ -50,7 +51,6 @@ function App() {
         setActiveTab((t) => (t + 1) % Tabs.length)
     }, [])
 
-  </div>
     useKeybinds({
         onNavigate: navigate,
         onInnerNavigate: innerNavigate,
@@ -78,7 +78,16 @@ function App() {
                         setInnerIdx(0)
                     }}
                 />
+                <InnerPanel
+                    sectionIdx={sectionIdx}
+                    focusMode={focusMode}
+                    innerIdx={innerIdx}
+                    onInnerSelect={setInnerIdx}
+                    onEnterInner={enterInner}
+                    ref={contentRef}
+                />
             </div>
+
             <StatusBar sectionIdx={sectionIdx} focusMode={focusMode} />
             <KeybindHints focusMode={focusMode} canEnterInner={canEnterInner} />
         </div>
