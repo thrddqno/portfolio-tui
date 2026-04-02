@@ -12,7 +12,7 @@ export const projects: ProjectItem[] = [
     {
         title: 'Ledgerly',
         sub: 'github.com/thrddqno/ledgerly-app',
-        desc: 'Full-stack personal finance tracker. Spring Boot API with JWT auth, refresh token rotation via HttpOnly cookies, keyset pagination, Swagger UI, and a React frontend.',
+        desc: "Ledgerly is a full-stack personal finance tracker, and a learner's project, designed to help users manage income, expenses, and budgets efficiently.",
         tags: ['Spring Boot', 'React', 'PostgreSQL', 'Docker', 'JWT'],
         status: 'wip',
         statusText: 'wip - frontend in progress',
@@ -20,8 +20,8 @@ export const projects: ProjectItem[] = [
     },
     {
         title: 'Flutter Offline POS',
-        sub: 'point-of-sale · offline-capable',
-        desc: 'Offline-first point-of-sale system built in Flutter. Local SQLite storage, receipt generation, and inventory management — no internet required.',
+        sub: 'github.com/thrddqno/basic_single-user_pos_flutter',
+        desc: "A single device, single user point-of-sale system with data analytics that prioritizes daily sales. Allowing businesses to operate a POS without the need of an internet connection and provide a daily reporting system for the business' Daily SOP. ",
         tags: ['Flutter', 'Dart', 'SQLite'],
         status: 'done',
         statusText: 'complete',
