@@ -65,6 +65,19 @@ function App() {
             }
         >
             <TitleBar activeTab={activeTab} onTabChange={setActiveTab} />
+            <div className={'flex flex-1 overflow-hidden'}>
+                <Sidebar
+                    sectionIdx={sectionIdx}
+                    focusMode={focusMode}
+                    onSelect={(i) => {
+                        setSectionIdx(i)
+                        setFocusMode('outer')
+                        setInnerIdx(0)
+                    }}
+                />
+            </div>
+            <StatusBar sectionIdx={sectionIdx} focusMode={focusMode} />
+            <KeybindHints focusMode={focusMode} canEnterInner={canEnterInner} />
         </div>
     )
 }
