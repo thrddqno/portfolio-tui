@@ -4,7 +4,7 @@
 @plugin "daisyui";
 
 @plugin "daisyui/theme" {
-  name: "dark";
+  name: "everforest-dark";
   default: true;
   prefersdark: false;
   color-scheme: "dark";
