@@ -16,8 +16,7 @@ export default function KeybindHints({ focusMode, canEnterInner }) {
         focusMode === 'inner'
             ? INNER_HINTS
             : OUTER_HINTS.filter((h) => {
-                  if (h.key === 'Enter/l' && !canEnterInner) return false
-                  return true
+                  return !(h.key === 'Enter / ArrowRight / l' && !canEnterInner)
               })
 
     return (
